@@ -1,6 +1,6 @@
 # md5-verification
 
-This contains a function for verifying MD5 hashsums.  It is simply a python wrapper for the windows utility CertUtil, and consequently certUtil must be available and it currently works on windows only.  I plan change this soon.
+This contains a function for verifying MD5 hashsums.  It is simply a python wrapper for the windows utility CertUtil, and consequently certUtil must be available.  It currently works on windows only, which is something I plan change soon.
 
 To use, invoke cmd.exe and run:
 
