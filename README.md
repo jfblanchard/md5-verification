@@ -5,7 +5,7 @@ This contains a function for verifying MD5 hashsums.  It is simply a python wrap
 To use, invoke cmd.exe and run:
 
 <code>
-  python verify_MD5.py 'checksum
+  python verify_MD5.py 'checksum'
    
 </code>
 <br><p>
