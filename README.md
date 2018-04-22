@@ -8,7 +8,7 @@ To use, invoke cmd.exe and run:
   python verify_MD5.py 'checksum'
    
 </code>
-<br><p>
+
  where 'checksum is the MD5 Hash sum that was provided with the downloaded file.
  
  A file gui will come up in which you can select the downloaded file to verify.  Once completed, the original and computed has sums will be displayed, as well as one of two messages:
