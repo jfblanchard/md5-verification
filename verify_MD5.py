@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Command line tool for verifying md5 hash sums.
+Command line tool for verifying md5 message digests.
 
-Updating to use the python moduld hashlib instead of the windows certUtil tool
+Updating to use the python module hashlib instead of the windows certUtil tool
 for platform independence.
 
 Warning: MD5 has been broken. Is still useful for verifiying that a file did 
