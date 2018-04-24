@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-Functions for performing md5 hash sum verifications.
+Command line tool for verifying md5 hash sums.
 
 Updating to use the python moduld hashlib instead of the windows certUtil tool
 for platform independence.
 
-Warning: MD5 has been broken. Is still useful for verifiying a file did not get
-corrupted during transfer.
+Warning: MD5 has been broken. Is still useful for verifiying that a file did 
+not get corrupted during download.
 
 """
 
@@ -55,37 +55,37 @@ def verify_MD5(hash_string, filename):
     with open(filename,'rb') as f:
         for block in iter(lambda: f.read(128), b""):
             h.update(block) 
-    computed_sum = h.hexdigest()
+    computed_hash = h.hexdigest()
 
-    print_results(hash_string,computed_sum)
+    print_results(hash_string,computed_hash)
   
     
-def print_results(hash_string,computed_sum):
+def print_results(hash_string,computed_hash):
     """Print the results of the calculation to console
     
     Parameters
     ----------
     hash_string : str
         Original hash string that was posted. 
-    computed_sum : str
+    computed_hash : str
         Digest that was computed on the received file.          
     
     """
 
-    print ('MD5 Hash Sum: ' + hash_string)
-    print ('Computed: ' + computed_sum)   
+    print ('Original Digest: ' + hash_string)
+    print ('Computed Digest: ' + computed_hash)   
     
-    if hash_string == computed_sum:
-        print ('SUCCESS! Sums match')
+    if hash_string == computed_hash:
+        print ('SUCCESS! Message digests match')
     else:
-        print('FAIL!. Sums do not match')
+        print('FAIL!. Message digests do not match')
 
 
 
 if __name__ == '__main__':
     
     hash_sum = sys.argv[1]
-    fname = get_file('Please choose a file for checksum')
+    fname = get_file('Please choose a file to verify MD5 hash')
     verify_MD5(hash_sum, fname)
     
 
