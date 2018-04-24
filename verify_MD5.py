@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-Functions for performing a MD5 hash sum verification.
+Functions for performing md5 hash sum verifications.
 
-#Calls the windows program certUtil.
-Updating to use the python moduld hashlib for platform independence.
-Todo:  Support more hashes besides md5
-make a drop down menu of hash types
+Updating to use the python moduld hashlib instead of the windows certUtil tool
+for platform independence.
 
-Warn the user that MD5 has been broken.
+Warning: MD5 has been broken. Is still useful for verifiying a file did not get
+corrupted during transfer.
 
 """
 
@@ -17,47 +16,64 @@ from tkinter import Tk
 from tkinter import filedialog
 
 
-#bring up a dialog to select a file-----------------------------------------
-def get_file(myTitle=None):
-    
-    """ Displays Tk GUI to select a file for processing 
+def get_file(myTitle=None):   
+    """ Displays Tk dialog to select a file for processing 
     
     Parameters
     ----------
     myTitle : str
-        String to use for the message displayed. 
+        String to use for the message displayed in the title bar. 
+        
+    Returns
+    -------
+    filename : string
+        The name of the file on which to compute the digest.
+        
     """
     
-    Tk().withdraw()                #keep the root window from appearing
-    filename = filedialog.askopenfilename(title=myTitle)       #select top level directory
+    Tk().withdraw()                
+    filename = filedialog.askopenfilename(title=myTitle)
     return filename
 
                     
 
 def verify_MD5(hash_string, filename):
-    """ Function to compute hash sums.
-    
+    """ Function to compute md5 hash sum.
+
+    Parameters
+    ----------
+    myTitle : str
+        String to use for the message displayed in the title bar. 
+        
+    Returns
+    -------
+    filename : string
+        The name of the file on which to compute the digest.
     """
     
-    hashes = hashlib.algorithms_available
-    
-    #h = hashlib.new('md5')
-    h = hashlib.new('sha256')
-    
+    h = hashlib.md5()
     with open(filename,'rb') as f:
         for block in iter(lambda: f.read(128), b""):
-            h.update(block)
-        
+            h.update(block) 
     computed_sum = h.hexdigest()
 
-    print ('MD5 Hash Sum: ' + hash_string)
-    print ('Computed: ' + computed_sum)
-    
     print_results(hash_string,computed_sum)
+  
     
 def print_results(hash_string,computed_sum):
-    """Print the results of the calculation
+    """Print the results of the calculation to console
+    
+    Parameters
+    ----------
+    hash_string : str
+        Original hash string that was posted. 
+    computed_sum : str
+        Digest that was computed on the received file.          
+    
     """
+
+    print ('MD5 Hash Sum: ' + hash_string)
+    print ('Computed: ' + computed_sum)   
     
     if hash_string == computed_sum:
         print ('SUCCESS! Sums match')
@@ -65,19 +81,6 @@ def print_results(hash_string,computed_sum):
         print('FAIL!. Sums do not match')
 
 
-def test_hash_sum():
-    """Test function currently using the one from the python docs."""
-    
-    test_string = 'Nobody knows the trouble Ive seen'
-
-    m = hashlib.new('md5')
-    m.update(test_string.encode('utf-8'))
-    computed = m.hexdigest()
-    
-    answer = '2e7bb7e7d27b8cda5492e24345dd1c69'
-    kali = 'ed88466834ceeba65f426235ec191fb3580f71d50364ac5131daec1bf976b317'
-    print_results(computed,answer)
-    
 
 if __name__ == '__main__':
     
