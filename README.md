@@ -4,7 +4,7 @@
 
 This is a command line utility that is used for verifying MD5 hashes.  It utilizes the python hashlib library.  
 
-To use, invoke cmd.exe and run:
+To use, invoke a terminal (linux) or cmd.exe (windows) and run:
 
 <code>
   python verify_MD5.py 'checksum'
