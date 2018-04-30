@@ -2,7 +2,7 @@
 
 This repository contains two python scripts for verifying files using a MD5 Hash Algorithm.  The first **_verify_MD5.py_** is a comand line utilty, where **_verify_Md5_gui.py_** is a GUI version with the same functionality. They each use the python hashlib library for computing the message digests.  Usage for both are described in more detail below. <br>
 
-#### 1. Usage: verify_MD5.py
+#### Usage: verify_MD5.py
 
 This is a command line utility that is used for verifying MD5 hashes.  
 To use, invoke a terminal (linux) or cmd.exe (windows) and run:
@@ -16,16 +16,14 @@ To use, invoke a terminal (linux) or cmd.exe (windows) and run:
  
  A file dialog will come up in which you can select the downloaded file to verify.  Once completed, the original and computed has sums will be displayed, as well as one of two messages:  
  
-```python
- 'SUCCESS! Message digests match'  
-```
-or  
-```python
- 'FAIL!. Message digests do not match'   
-```
+`'SUCCESS! Message digests match' ` 
+
+or 
+
+`'FAIL!. Message digests do not match'`
 
 
-#### 2. Usage: verify_md5_qt.py
+#### Usage: verify_md5_qt.py
 
 This is a GUI for verifying MD5 hashes.  To start the program in a shell, go into the working directory and type
 
