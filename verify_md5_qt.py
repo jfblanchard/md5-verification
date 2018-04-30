@@ -31,7 +31,7 @@ class HashDialog(QDialog):
         
         
     def close_me(self):
-        sys.exit(app.exec_())
+        self.close()
         
         
     def reset_me(self):
@@ -39,6 +39,7 @@ class HashDialog(QDialog):
         self.filename = ''
         self.ui.inputEdit.setText('')
         self.ui.resultsBox.setText('')
+        self.ui.progressBar.setValue(0)
               
 
     def verify_digest(self):
@@ -55,12 +56,19 @@ class HashDialog(QDialog):
         # h = hashlib.new('sha256')
 
         if os.path.isfile(self.filename):
+            bytes_read = 0
+            block_size = 128  #bytes
+            file_size = os.path.getsize(self.filename)
+            
             with open(self.filename, 'rb') as f:
-                for block in iter(lambda: f.read(128), b""):
+                for block in iter(lambda: f.read(block_size), b""):
                     h.update(block)
-
+                    bytes_read += block_size
+                    self.ui.progressBar.setValue(100*bytes_read/file_size)
+                    
             computed_hash = h.hexdigest()
-            # self.compare results
+            
+            # compare results...move to separate function?
             self.ui.resultsBox.setTextColor(QColor(0, 0, 0))
             self.ui.resultsBox.setText('Original: ' + original)
             self.ui.resultsBox.append('Computed: ' + computed_hash + '\n')
@@ -83,5 +91,5 @@ if __name__ == '__main__':
 
 
 # Todo:
-# Implement progress bar
-# Profile block sizes to determine optimum size
+# Add more algorithm types
+    
