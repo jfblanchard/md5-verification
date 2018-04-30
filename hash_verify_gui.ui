@@ -374,17 +374,30 @@
     <string>Start</string>
    </property>
   </widget>
-  <widget class="QDialogButtonBox" name="buttonBox">
+  <widget class="QPushButton" name="closeButton">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>370</y>
+     <width>82</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Close</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="resetButton">
    <property name="geometry">
     <rect>
      <x>360</x>
      <y>370</y>
-     <width>166</width>
-     <height>23</height>
+     <width>82</width>
+     <height>25</height>
     </rect>
    </property>
-   <property name="standardButtons">
-    <set>QDialogButtonBox::Close|QDialogButtonBox::Reset</set>
+   <property name="text">
+    <string>Reset</string>
    </property>
   </widget>
  </widget>

@@ -119,10 +119,12 @@ class Ui_hashDialog(object):
         self.startButton.setPalette(palette)
         self.startButton.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
         self.startButton.setObjectName("startButton")
-        self.buttonBox = QtWidgets.QDialogButtonBox(hashDialog)
-        self.buttonBox.setGeometry(QtCore.QRect(360, 370, 166, 23))
-        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Close|QtWidgets.QDialogButtonBox.Reset)
-        self.buttonBox.setObjectName("buttonBox")
+        self.closeButton = QtWidgets.QPushButton(hashDialog)
+        self.closeButton.setGeometry(QtCore.QRect(450, 370, 82, 25))
+        self.closeButton.setObjectName("closeButton")
+        self.resetButton = QtWidgets.QPushButton(hashDialog)
+        self.resetButton.setGeometry(QtCore.QRect(360, 370, 82, 25))
+        self.resetButton.setObjectName("resetButton")
 
         self.retranslateUi(hashDialog)
         QtCore.QMetaObject.connectSlotsByName(hashDialog)
@@ -139,4 +141,6 @@ class Ui_hashDialog(object):
         self.progressLabel.setText(_translate("hashDialog", "Progress"))
         self.startButton.setToolTip(_translate("hashDialog", "Start the computation"))
         self.startButton.setText(_translate("hashDialog", "Start"))
+        self.closeButton.setText(_translate("hashDialog", "Close"))
+        self.resetButton.setText(_translate("hashDialog", "Reset"))
 
