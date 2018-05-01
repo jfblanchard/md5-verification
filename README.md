@@ -11,16 +11,16 @@ To use, invoke a terminal (linux) or cmd.exe (windows) and run:
 ``` 
 
 
- where 'checksum is the MD5 Hash string that was provided with the downloaded file.  
+ where 'checksum' is the MD5 Hash string that was provided with the downloaded file.  
  
  
- A file dialog will come up in which you can select the downloaded file to verify.  Once completed, the original and computed has sums will be displayed, as well as one of two messages:  
+ A file dialog will come up in which you can select the downloaded file to verify.  Once completed, the original and computed hash sums will be displayed, as well as one of two messages:  
  
 `'SUCCESS! Message digests match' ` 
 
 or 
 
-`'FAIL!. Message digests do not match'`
+ `'FAIL! Message digests do not match'`
 
 
 #### Usage: verify_md5_qt.py
@@ -47,7 +47,7 @@ If it finds a successful match, the output will be displayed in the output box a
 ![GUI Image](/images/MD5_gui_2.png)
 
 
-Otherwise, the message will indicated a failed match.
+Otherwise, the message will indicate a failed match.
 
 
 
